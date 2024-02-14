@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="katizon" translate="label" sortOrder="550">
+			<label>Katizon</label>
+		</tab>
+		<section id="aadhaar_number" sortOrder="40" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>Aadhaar</label>
+			<tab>katizon</tab>
+			<resource>Katizon_AadhaarNumber::config_katizon_aadhaarnumber</resource>
+			<group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>General</label>
+				<field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="0" showInDefault="1" translate="label">
+					<label>Enable</label>
+					<comment/>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="label" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Aadhaar Label</label>
+					<comment>Label to Display On Cart Page</comment>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

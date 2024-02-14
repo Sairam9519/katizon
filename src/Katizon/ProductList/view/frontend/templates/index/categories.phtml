@@ -1,0 +1,22 @@
+<?php
+/** @var \Katizon\ProductList\Block\Index\Categories $block */
+
+$categories = $block->getCategories();
+?>
+
+<?php foreach ($categories->getChildrenData() as $category): ?>
+    <ul class="category">
+        <li class="category-name"><?= $category->getName() ?></li>
+            <?php foreach ($category->getChildrenData() as $subCategory): ?>
+                <ul class="subcategory">
+                    <li class="subcategory-name">
+                        <input type="checkbox" name="tech1" value="<?= $subCategory->getId() ?>" />
+                        <?= $subCategory->getName() ?>
+                    </li>
+                </ul>
+            <?php endforeach; ?>
+        </li>
+    </ul>
+
+<?php endforeach; ?>
+

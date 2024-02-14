@@ -1,0 +1,22 @@
+{
+    "name": "katizon/module-categories",
+    "description": "Module to add Custom attribute on Categories  and Custom Category Page",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "SaiRam",
+            "email": "sairamsigirisetty@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Katizon\\Categories\\": ""
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "katizon/module-aadhaarnumber",
+    "description": "Module to collect Aadhaar Number on Cart Page",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Sairam",
+            "email": "sairamsigirisetty@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Katizon\\AadhaarNumber\\": ""
+        }
+    }
+}
