@@ -1,0 +1,22 @@
+{
+    "name": "katizon/module-productlist",
+    "description": "Module to add Custom Product List Page",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Sai Ram",
+            "email": "sairamsigirisetty@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Katizon\\ProductList\\": ""
+        }
+    }
+}

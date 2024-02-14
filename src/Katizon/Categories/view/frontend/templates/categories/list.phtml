@@ -1,0 +1,108 @@
+<?php
+/** @var \Katizon\Categories\Block\Categories $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$categories = $block->getCategories();
+
+?>
+<div class="categories">
+    <?php foreach ($categories->getChildrenData() as $category): ?>
+        <?php if($category->getLevel() == 2):?>
+        <div class="category-level">
+            <div class="category">
+                <div class="category-name">
+                    <span class="name"><?= $category->getName() ?></span>
+                </div>
+                <div class="category-image">
+                    <span class="image">
+                        <img src="<?=$block->getImageUrl($category->getId()) ?>" alt="<?= $category->getName()?>" />
+                    </span>
+                </div>
+            </div>
+            <div class="subcategories">
+                <?php foreach ($category->getChildrenData() as $subCategory): ?>
+                    <div class="subcategory">
+                        <div class="subcategory-image">
+                            <span class="image">
+                                <img src="<?=$block->getImageUrl($subCategory->getId()) ?>" alt="<?=$subCategory->getName()?>" />
+                            </span>
+                        </div>
+                        <div class="subcategory-name">
+                            <span class="name">
+                                <?= $escaper->escapeHtmlAttr($subCategory->getName()) ?>
+                            </span>
+                        </div>
+                        <div class="subcategory-info">
+                            <span class="info">
+                                <?= $escaper->escapeHtmlAttr($block->getInfo($subCategory->getId())) ?>
+                            </span>
+                        </div>
+                        <div class="submit">
+                            <a href="<?= $block->getProductUrl($subCategory->getId()) ?>">
+                                <span><?= $escaper->escapeHtmlAttr(__("View Products")) ?></span>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>
+
+<style>
+    .category-level  {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .subcategories {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .subcategories .subcategory {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        width: calc(33.33% - 20px);
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .subcategories .subcategory .subcategory-image .image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .category-image.image img {
+        width: 500px;
+        height: 500px;
+    }
+
+    .category-level .category .category-name {
+        position: absolute;
+        right: 750px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .subcategories .subcategory .subcategory-name {
+        position: absolute;
+        font-size: medium;
+        font-weight: bold;
+    }
+
+    .subcategories .subcategory .subcategory-info {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: medium;
+    }
+
+</style>

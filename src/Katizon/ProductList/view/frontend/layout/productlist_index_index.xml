@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+        <referenceContainer name="header-wrapper">
+            <referenceBlock name="navigation.sections" remove="true" />
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block name="sidebar.categories" class="Katizon\ProductList\Block\Index\Categories" template="Katizon_ProductList::index/categories.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <referenceBlock name="catalog.compare.sidebar" remove="true" />
+            <referenceContainer name="sidebar.additional" remove="true" />
+			<block name="index.index" class="Katizon\ProductList\Block\Index\Index" template="Katizon_ProductList::index/index.phtml"/>
+		</referenceContainer>
+	</body>
+</page>

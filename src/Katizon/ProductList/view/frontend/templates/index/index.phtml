@@ -1,0 +1,16 @@
+<?php
+/** @var \Katizon\ProductList\Block\Index\Index $block */
+$products = $block->getProductCollection();
+?>
+<div id="gridview">
+    <div class="heading">Product Gallery for Shopping Cart</div>
+    <?php if (($products->getSize() > 0)): ?>
+        <?php foreach ($products->getItems() as $product): print_r($product->getData()); die();?>
+            <div class="product-info">
+                <div class="product-title"><?php echo $product->getName(); ?></div>
+                <div class="add-to-cart">
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

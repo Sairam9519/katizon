@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Generic.Files.LineLength.TooLong
+
+/**
+ * @var \Katizon\AadhaarNumber\Block\Cart\AadhaarNumberDisplayBlock $block
+ * @var \Magento\Framework\Escaper $escaper
+ *
+ */
+
+// We should use strlen function because coupon code could be "0", converted to bool will lead to false
+$hasAadhaarNumber = $block->getAadhaarNumber() !== null && strlen($block->getAadhaarNumber()) > 0;
+?>
+<div class="cart-discount"
+     id="block-aadhaar">
+    <div class="content" data-role="content" aria-labelledby="block-discount-heading">
+        <div class="fieldset aadhaar<?= $hasAadhaarNumber ? ' applied' : '' ?>">
+            <div class="field">
+                <div class="control">
+                    <div class="field aadhaar-number">
+                        <div class="control">
+                            <label class="label" for="title"><span><?= $escaper->
+                                    escapeHtmlAttr($block->getLabel()) ?></span>
+                            </label>
+                            <input type="text"
+                                   class="input-text"
+                                   id="aadhaar_number"
+                                   name="aadhaar_number"
+                                   value="<?= $escaper->escapeHtmlAttr($block->getAadhaarNumber()) ?>"
+                                   placeholder="<?= $escaper->escapeHtmlAttr(__($block->getLabel())) ?>"
+                            />
+                            <div id ="error-msg" class="error-msg">
+                                <span class="msg"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+       "#aadhaar_number": {
+            "aadhaarnumber": {
+                "aadhaarSaveUrl": "<?= $block->getAadhaarSaveUrl() ?>",
+                "quote_id": "<?= $block->getQuote()->getId() ?>"
+            }
+        }
+    }
+</script>
+
