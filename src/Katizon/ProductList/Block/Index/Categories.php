@@ -52,4 +52,14 @@ class Categories extends Template
         $rootNodeId = $this->storeManager->getStore()->getRootCategoryId();
         return $categoryManagement->getTree($rootNodeId);;
     }
+
+    /**
+     * @param $categoryId
+     * @return string
+     */
+    public function getProductsListUrl($categoryId)
+    {
+        $params = ["category_id" => $categoryId];
+        return $this->getUrl('productlist/index/index', $params);
+    }
 }

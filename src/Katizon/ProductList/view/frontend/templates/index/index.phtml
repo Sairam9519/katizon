@@ -1,16 +1,50 @@
 <?php
 /** @var \Katizon\ProductList\Block\Index\Index $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
 $products = $block->getProductCollection();
 ?>
 <div id="gridview">
     <div class="heading">Product Gallery for Shopping Cart</div>
     <?php if (($products->getSize() > 0)): ?>
-        <?php foreach ($products->getItems() as $product): print_r($product->getData()); die();?>
+        <?php foreach ($products->getItems() as $product):?>
             <div class="product-info">
-                <div class="product-title"><?php echo $product->getName(); ?></div>
-                <div class="add-to-cart">
+                <div class="category-image">
+                    <span class="image">
+                        <img src="<?=$block->getImageUrl($product) ?>" alt="<?= $product->getName()?>" />
+                    </span>
+                </div>
+                <div class="product-title">
+                    <a href="<?= $product->getProductUrl() ?>">
+                        <span class="title">
+                            <?= $escaper->escapeHtmlAttr($product->getName()) ?>
+                        </span>
+                    </a>
+                </div>
+                <div class="product-price">
+                    <span class="price">
+                        <?= $escaper->escapeHtmlAttr($block->getProductPrice($product)) ?>
+                    </span>
+                </div>
+                <div class="product-short-desc">
+                    <span class="short-desc">
+                        <?= $escaper->escapeHtmlAttr($product->getShortDescription()) ?>
+                    </span>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
+
+<style>
+    .product-info {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        width: calc(33.33% - 20px);
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
