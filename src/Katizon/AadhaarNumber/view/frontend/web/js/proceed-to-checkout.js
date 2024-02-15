@@ -23,7 +23,7 @@ define([
                 return false;
             }
             let aadhaarValue = $("#aadhaar_number").val();
-            if (aadhaarValue != null) {
+            if (aadhaarValue != null && aadhaarValue != "") {
                 let aadhaarValueLength = aadhaarValue.trim().length;
                 if (aadhaarValueLength != 12) {
                     $('#error-msg span').text('Aadhaar number should be 12 digits long');
